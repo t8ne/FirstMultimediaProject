@@ -1,0 +1,491 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+html, body { 
+    
+    overflow:hidden;  
+}
+ 
+/* web fonts */
+
+@font-face {
+    font-family: 'golos_text';
+    src: url('../fonts/GolosText-Medium.woff2') format('woff2'),
+         url('../fonts/GolosText-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Ostrich black';
+    src: url('../fonts/ostrich-black.ttf');
+}
+
+@font-face {
+    font-family: 'poppins';
+    src: url('../fonts/Poppins-Medium.woff2') format('woff2'),
+         url('../fonts/Poppins-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@keyframes spin {
+
+    from{
+      transform: rotate(0deg);
+      moz-transform: rotate(0deg); /*Firefox*/
+      ms-transform: rotate(0deg); /*Microsoft Browsers*/
+    }
+    to{
+      transform: rotate(-360deg);
+      moz-transform: rotate(-360deg); /*Firefox*/
+      ms-transform: rotate(-360deg); /*Microsoft Browsers*/
+    }
+  }
+  @-webkit-keyframes spin{
+    from{-webkit-transform: rotate(0deg);}
+    to{-webkit-transform: rotate(-360deg);}
+  }
+ 
+ 
+
+body {
+        
+    width: 900vw; /*vieport width=1/100 da largura do viewport */ /*neste caso o body vai incluir 9 seções */
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    /*overflow-x:hidden;*/
+    
+    font-family: 'golos_text';
+    font-size: 34px;
+    font-style: bold;
+    letter-spacing: -1px;
+}
+
+p,h1,h2,h3,h4,h5,h6{
+    margin-bottom: 20px;
+}
+
+nav{
+    
+    width: 400px;
+    margin-left: 540px;
+    height:50px;
+    background-color: rgba(0,0,0,0.3);
+    position:fixed;
+    z-index:99;
+
+    display:flex;
+    justify-content:center; /*centrar na horizontal*/
+    align-items: center;    /*centrar na vertical*/
+    
+}
+
+#menu{
+    width:1024px;
+    display:flex;
+    justify-content: center; /*centrar na horizontal*/
+    align-items: center; /*centrar na vertical*/
+    position:relative;
+ }
+
+nav ul li{
+    list-style: none;
+    float: left;
+    padding: 5px;
+    margin: 5px;
+    color: #aaa;
+    
+}
+
+nav ul li a {
+    text-decoration: none;
+    display: block;
+    color: #f0f0f0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    
+
+    width:40px; /*largura do botão*/
+    height:40px; /*altura do botão*/
+    object-fit: cover;
+    object-position: center;
+   
+}
+
+nav ul li a:hover {
+    /* text-decoration: none;*/
+   /* color: #fff;*/
+}
+
+
+.tooltip{
+    position: relative;
+    width: 250px; /*largura do li 150*/
+    height: 33px; /* altura do li 33*/
+    /*background-color: rgb(253, 25, 166);*/
+    
+   }
+.tooltip .textoTooltip{
+    background-size: cover;
+    visibility: hidden; /* no início está escondida, depois, quando faz hover, é mostrada */
+
+    width: 50%; 
+
+    /*background-color: rgb(91, 91, 148);*/
+    background-color: rgb(72, 108, 140);
+    color:rgb(251, 251, 251);
+    
+    text-align:center;
+    border-radius: 6px;
+    padding: 5px 5px;
+            
+    position: absolute;
+    z-index: 999;/* para ficar no topo*/
+ 
+    
+    margin-left:-36px;/*150px/4=37*/
+    top:100%;
+    margin-top:16px;/*33/2=16*/
+  
+    opacity:0; /* opacidade a zero -> transparente */
+    transition:opacity 0.7s;
+
+    font-family: 'poppins';
+    letter-spacing:2px;
+    
+
+}
+/* triângulo do tooltip*/
+.tooltip .textoTooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 85%;
+    right: 50%;
+    margin-right: 5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(75, 77, 75) transparent transparent transparent;
+  }
+
+
+.tooltip:hover .textoTooltip{
+    visibility:visible; /* quando faz hover sobre a div tooltip, mostra o texto do tooltip */
+    opacity:1;
+   
+    font-size:14px; 
+    line-height:14px;
+     
+}
+
+/*icones*/
+#pagInicial {background-image: url(../images/images_menu/Pag-Ini-preto-01.png);}
+#pagInicial:hover {background-image: url(../images/images_menu/Pag-Ini-amarelo-01.png);}
+#pagInicial:active {background-image: url(../images/images_menu/Pag-Ini-bw-01.png);} /* quando prime no botão */
+#pagInicial.active {background-image: url(../images/images_menu/Pag-Ini-bw-01.png);}  /* adiciona a classe "active" no javascript*/
+
+#oqe {background-image: url(../images/images_menu/o_q_e-deselect-01.png);}
+#oqe:hover {background-image: url(../images/images_menu/o_q_e-select-01.png);}
+#oqe:active {background-image: url(../images/images_menu/o_q_e-bw-01.png);}
+#oqe.active {background-image: url(../images/images_menu/o_q_e-bw-01.png);}  /* adiciona a classe "active" no javascript*/
+
+#hist {background-image: url(../images/images_menu/HistoriaPreto-01.png); }
+#hist:hover {background-image:url(../images/images_menu/HistoriaAmarelo-01.png); }
+#hist:active {background-image: url(../images/images_menu/HistoriaBranco-01.png);}
+#hist.active {background-image: url(../images/images_menu/HistoriaBranco-01.png);}  /* adiciona a classe "active" no javascript*/
+
+#vanDes {background-image: url(../images/images_menu/van_des-deselect-01.png); }
+#vanDes:hover {background-image: url(../images/images_menu/van_des-select-01.png);}
+#vanDes:active {background-image: url(../images/images_menu/van_des-bw-01.png);}
+#vanDes.active {background-image: url(../images/images_menu/van_des-bw-01.png);}  /* adiciona a classe "active" no javascript*/
+
+#futuro {background-image: url(../images/images_menu/futuro-deselect.png); }
+#futuro:hover {background-image: url(../images/images_menu/futuro-select.png);}
+#futuro:active {background-image: url(../images/images_menu/futuro-bw.png);} 
+#futuro.active {background-image: url(../images/images_menu/futuro-bw.png);} /* adiciona a classe "active" no javascript*/
+
+#contacto {background-image: url(../images/images_menu/ContactosPreto-01.png); }
+#contacto:hover {background-image: url(../images/images_menu/ContactosAmarelo-01.png);}
+#contacto:active {background-image: url(../images/images_menu/ContactosBranco-01.png);} 
+#contacto.active {background-image: url(../images/images_menu/ContactosBranco-01.png);} /* adiciona a classe "active" no javascript*/
+
+
+.section {
+        
+    width:100vw;
+    height: 100vh;
+    
+    float: left;
+     
+    text-shadow: 1px 1px 2px #f0f0f0;
+    
+    background-repeat:no-repeat;
+    background-size:100vw 100vh;
+    /*background-attachment:fixed;*/
+}
+
+.section h2 {
+    margin: 25px 0px 15px 25px;
+    font-family: 'poppins';
+    font-size:28px;
+}
+
+.section p {
+    margin: 20px 0px 0px 50px;
+    font-size:24px;
+}
+
+#section1{
+    position: relative;
+}
+
+.button{
+    border:none;
+    margin: 0 auto;
+    padding:33px 40px;
+    display: inline-block;
+    transition-duration: 0.5s;
+    cursor:pointer;
+    position: absolute;
+    background-size: cover;
+    background-position: center center;
+}
+
+.button1{
+    border: 1px solid #1f140fb3;
+    background-color: #f8b032b4;
+    background-image:url(../images/images_menu/seta-seg-01.png);
+}
+
+.button1:hover{
+    background-color: #1f140fb3;
+    border: 1px solid #f8b032b4;
+    background-image:url(../images/images_menu/seta-seg-01.png);
+}
+
+.button2{
+    border: 1px solid #1f140fb3;
+    background-color: #f8b032b4;
+    background-image:url(../images/images_menu/seta-ant-01.png);
+}
+
+.button2:hover{
+    background-color: #1f140fb3;
+    border: 1px solid #f8b032b4;
+    background-image:url(../images/images_menu/seta-ant-01.png);
+}
+
+.cor1{
+   background-color:antiquewhite;
+   background-image: url(../images/Untitled-2-01.jpg);
+}
+
+.cor2{
+    background-image: url(../images/2Pagina.jpg);
+}
+
+.cor3{
+   background-color:aqua;
+   background-image: url(../images/3Pagina.jpg);
+}
+
+.cor4{
+    background-color:aquamarine;
+    background-image: url(../images/4p.jpg);
+}
+
+.cor5{
+    background-color:antiquewhite;
+    background-image: url(../images/5-05.jpg);
+}
+
+.cor6{
+    background-color:aquamarine;
+    background-image: url(../images/6p.jpg);
+}
+
+.cor7{
+    background-image: url(../images/7p.jpg);
+}
+
+.cor8{
+    background-image: url(../images/8-08.jpg);
+}
+
+.cor9{
+    background-image: url(../images/9Pagina.jpg);
+}
+
+.conteudo {
+    
+    width:1100px;
+    margin:0 auto;
+    padding-top:70px;
+}
+
+.ostrich {
+    font-family: 'Ostrich black';
+    font-size:11px;   
+}
+
+.imageSpin7{
+
+
+    position: relative;
+    top: -700px;
+    left: -622px;
+    width: 1000px;
+    height: 1000px;
+    margin: -60px 0 0 150px;
+    -webkit-animation: spin 1s linear infinite;
+    -moz-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+
+.imageSpin6{
+
+
+    position: relative;
+    top: 8px;
+    left: 902px;
+    width: 150px;
+    height: 150px;
+    margin: -60px 0 0 150px;
+    -webkit-animation: spin 1s linear infinite;
+    -moz-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+
+.imageSpin4{
+
+
+    position: relative;
+    top: -42px;
+    left: 677px;
+    width: 350px;
+    height: 350px;
+    margin: -60px 0 0 150px;
+    -webkit-animation: spin 1s linear infinite;
+    -moz-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+
+.imageSpin3{
+
+
+    position: relative;
+    top: 105px;
+    left: 310px;
+    width: 270px;
+    height: 270px;
+    margin: -60px 0 0 150px;
+    -webkit-animation: spin 1s linear infinite;
+    -moz-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+
+.imageSpin{
+    position: absolute; left: -240px; bottom: -260px;
+    animation-name: spin;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 5s;
+    -webkit-animation-name: spin;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 5s;
+   /* transform-origin: 50% 50%; */
+       
+}
+
+.imageSpin2{
+
+
+    position: relative;
+    top: 230px;
+    left: 145px;
+    width: 170px;
+    height: 170px;
+    margin: -60px 0 0 150px;
+    -webkit-animation: spin 1s linear infinite;
+    -moz-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+
+
+    /*
+    position: absolute; left: 280px; bottom: -190px;
+    animation-name: spin;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 5s;
+    -webkit-animation-name: spin;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 5s;
+    transform-origin: 50% 50%; 
+    */
+       
+}
+
+@-webkit-keyframes spin{
+    100%{-webkit-transform: rotate(360deg);}
+}
+@-moz-keyframes spin{
+    100%{-webkit-transform: rotate(360deg);}
+}
+@keyframes spin{
+    100%{-webkit-transform: rotate(360deg);}
+}
+
+.mapa{
+    position: relative;  left: 889px; bottom: -30px;
+}
+
+.n1{
+    position: relative; left: -27px; bottom: 295px;
+    width:553px;
+    height: 26px;
+    background: transparent;
+    border: none;
+}
+
+.n2{
+    position: relative; left: -587px; bottom: 255px;
+    width:553px;
+    height: 26px;
+    background: transparent;
+    border: none;
+}
+
+.n3{
+    position: relative; left: 314px; bottom: 335px;
+    width:553px;
+    height: 26px;background: transparent;
+    border: none;
+}
+
+.n4{
+    position: relative; left: -246px; bottom: 195px;
+    width:553px;
+    height: 220px;
+    background: transparent;
+    border: none;
+}
+
+.flex-container{
+    display: flex;
+    margin-left:-200px;
+    margin-right: -200px;
+}
+
+.flex-child{
+    flex:1;
+}
